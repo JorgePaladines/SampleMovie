@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Movie;
 
 class UsersController extends Controller
 {
@@ -13,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('users.usersIndex')->with('users', $users);
     }
 
     /**
@@ -45,7 +48,13 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        $movies = Movie::all();
+        $data = [
+            'user' => $user,
+            'movies' => $movies
+        ];
+        return view('users.show')->with('data', $data);
     }
 
     /**

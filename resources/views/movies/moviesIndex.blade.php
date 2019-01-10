@@ -5,11 +5,12 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
                         <h3><a href="/movies/{{$movie->id}}">{{$movie->titulo}}</a></h3>
-                        <small>Written on {{$movie->created_at}}</small>
+                        <small>Calificación {{$movie->calificacion}}</small>
+                        <hr>
                     </div>
                 </div>
             </div>
         @endforeach
     @else
         <p>No movies found</p>
-@endif
+    @endif
