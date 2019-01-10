@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VisitasController extends Controller
 {
@@ -13,7 +14,24 @@ class VisitasController extends Controller
      */
     public function index()
     {
-        //
+
+      //SELECT count(user_id) as visitas, visitas.movie_id, movies.titulo
+      //FROM visitas
+      //JOIN movies on movies.id = visitas.movie_id
+      //GROUP BY visitas.movie_id
+      //ORDER BY visitas DESC
+
+      $visits = DB::table('visitas')
+                      ->join('movies', 'visitas.movie_id', '=', 'movies.id')
+                     ->select(DB::raw('movies.titulo as pelicula, count(user_id) as visits'))
+                     ->groupBy('pelicula')
+                     ->orderBy('visits', 'desc')->get();
+
+      $data = [
+
+          'visitas' => $visits
+      ];
+      return view('visitas.visitasIndex')->with('data', $data);
     }
 
     /**
@@ -34,7 +52,7 @@ class VisitasController extends Controller
      */
     public function store(Request $request)
     {
-        return view('visitas.visitasIndex');
+        return view('welcome');
     }
 
     /**
@@ -45,7 +63,7 @@ class VisitasController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

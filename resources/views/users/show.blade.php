@@ -1,28 +1,70 @@
-{{$user = $data['user']}}
-{{$movies = $data['movies']}}
 
-<h1>{{$user->nombre}}</h1>
-<p>{{$user->fnacimiento}}</p>
-<p>{{$user->plan}}</p>
-<p>{{$user->cuidad}}</p>
-<p>{{$user->pais}}</p>
-<p>{{$user->email}}</p>
 
-<h3>Select a movie to watch</h3>
+  <!doctype html>
+  <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+      <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    @if(count($movies) > 0)
-        @foreach($movies as $movie)
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-8 col-sm-8">
-                    	{!! Form::open(['action' => 'VisitasController@store', 'method' => 'POST']) !!}
-    						{{Form::submit($movie->titulo)}}
-						{!! Form::close() !!}
-                        <small>Written on {{$movie->created_at}}</small>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    @else
-        <p>No movies found</p>
-	@endif
+          <title>SampleMovie</title>
+
+          <!-- Fonts -->
+          <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+
+          <!-- Styles -->
+          <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+      </head>
+      <body>
+
+                <div class="hidden">
+
+                  {{$user = $data['user']}}
+                  {{$movies = $data['movies']}}
+
+              </div>
+              <div class="content">
+                  <div class="title m-b-md">
+                      SampleMovies
+                  </div>
+                  <div class="motto m-b-md">
+                      Movies and Ratings
+                  </div>
+
+                  <div class="links">
+
+                      <a href="{{ route('movies.index') }}">Movies</a>
+                      <a href="{{ route('visitas.index') }}">Top 10</a>
+                      <a href="{{ route('users.index') }}">Users</a>
+                  </div>
+              </div>
+
+
+
+              <div class="content m-b-md">
+
+
+
+                <h3>Select a movie to watch</h3>
+
+                    @if(count($movies) > 0)
+                        @foreach($movies as $movie)
+                            <div class="well">
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-8">
+
+                                        {!! Form::open(['action' => 'VisitasController@store', 'method' => 'POST']) !!}
+                                  {{Form::submit($movie->titulo)}}
+                              {!! Form::close() !!}
+                                        <small>Written on {{$movie->created_at}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>:( No tenemos películas disponibles)</p>
+                	@endif
+              </div>
+
+
+      </body>
+  </html>
