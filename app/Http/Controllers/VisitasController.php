@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Movie;
+USE App\Visitas;
+
 
 class VisitasController extends Controller
 {
+
+    public static function ver($id)
+    {
+        
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +50,7 @@ class VisitasController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -52,7 +61,7 @@ class VisitasController extends Controller
      */
     public function store(Request $request)
     {
-        return view('welcome');
+
     }
 
     /**
@@ -63,6 +72,22 @@ class VisitasController extends Controller
      */
     public function show($id)
     {
+
+        $movie = Movie::find($id);
+
+        $visitas = DB::table('visitas')
+              ->join('movies', 'visitas.movie_id', '=', 'movies.id')
+             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->where('movies.id',$id)
+             ->groupBy('pelicula')->get();
+
+        $data = [
+
+            'movie' => $movie,
+            'visitas' => $visitas
+      ];
+
+        return view('movies.show')->with('data', $data);
 
     }
 

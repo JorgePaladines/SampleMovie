@@ -1,4 +1,4 @@
-
+  <?php use App\Http\Controllers\VisitasController;?>
 
   <!doctype html>
   <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -51,10 +51,8 @@
                             <div class="well">
                                 <div class="row">
                                     <div class="col-md-8 col-sm-8">
-
-                                        {!! Form::open(['action' => 'VisitasController@store', 'method' => 'POST']) !!}
-                                  {{Form::submit($movie->titulo)}}
-                              {!! Form::close() !!}
+                                      {{VisitasController::ver($movie->id)}}
+                                        <a href="href="{{ route('visitas.ver', $movie->id) }}">{{$movie->titulo}}</a>
                                         <small>Written on {{$movie->created_at}}</small>
                                     </div>
                                 </div>

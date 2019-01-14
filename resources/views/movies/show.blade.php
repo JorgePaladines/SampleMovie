@@ -32,7 +32,12 @@
                     </div>
                 </div>
 
+                <div class="hidden">
 
+                  {{$visitas = $data['visitas']}}
+                  {{$movie = $data['movie']}}
+
+              </div>
 
                 <div class="content m-b-md">
 
@@ -40,7 +45,7 @@
                   <p><span class="subtitle">Director: </span>{{$movie->director}} <p>
                   <p><span class="subtitle">Reparto: </span>{{$movie->reparto}}</p>
                   <p><span class="subtitle">Tipo de plan: </span>{{$movie->plan}}</p>
-                  <p><span class="subtitle">Calificación: </span>{{$movie->calificacion}}</p>
+                  <p><span class="subtitle">Calificación: </span>{{$visitas[0]->calificacion}}</p>
 
 
 

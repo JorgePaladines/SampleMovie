@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::resource('movies', 'MoviesController');
 Route::resource('users', 'UsersController');
 Route::resource('visitas', 'VisitasController');
+
+Route::get('/ver', 'VisitasController@ver');

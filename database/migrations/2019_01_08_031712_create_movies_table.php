@@ -19,7 +19,6 @@ class CreateMoviesTable extends Migration
             $table->string('director');
             $table->string('reparto');
             $table->string('plan');
-            $table->smallInteger('calificacion')->nullable();
             $table->timestamps();
         });
     }

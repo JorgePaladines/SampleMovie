@@ -19,6 +19,7 @@ class CreateVisitasTable extends Migration
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
             $table->integer('movie_id')->unsigned()->nullable();
             $table->foreign('movie_id')->references('id')->on('movie')->onDelete('cascade');
+            $table->smallInteger('calificacion')->nullable();
             $table->timestamps();
         });
     }

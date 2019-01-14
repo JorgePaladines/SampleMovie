@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Movie;
+USE App\Visitas;
 
 class MoviesController extends Controller
 {
@@ -53,8 +56,22 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
+
         $movie = Movie::find($id);
-        return view('movies.show')->with('movie', $movie);
+
+        $visitas = DB::table('visitas')
+              ->join('movies', 'visitas.movie_id', '=', 'movies.id')
+             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->where('movies.id',$id)
+             ->groupBy('pelicula')->get();
+
+        $data = [
+
+            'movie' => $movie,
+            'visitas' => $visitas
+      ];
+
+        return view('movies.show')->with('data', $data);
     }
 
     /**
