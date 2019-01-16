@@ -20,3 +20,6 @@ Route::resource('users', 'UsersController');
 Route::resource('visitas', 'VisitasController');
 
 Route::get('/ver', 'VisitasController@ver');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
