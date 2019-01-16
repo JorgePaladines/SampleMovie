@@ -28,7 +28,6 @@
 
                         <a href="{{ route('movies.index') }}">Movies</a>
                         <a href="{{ route('visitas.index') }}">Top 10</a>
-                        <a href="{{ route('users.index') }}">Users</a>
                     </div>
                 </div>
 
@@ -41,12 +40,6 @@
               </div>
 
                 <div class="content m-b-md">
-
-                  <h2>{{$movie->titulo}}</h2>
-                  <p><span class="subtitle">Director: </span>{{$movie->director}} <p>
-                  <p><span class="subtitle">Reparto: </span>{{$movie->reparto}}</p>
-                  <p><span class="subtitle">Tipo de plan: </span>{{$movie->plan}}</p>
-                  <p><span class="subtitle">Calificación: </span>{{$visitas[0]->calificacion}}</p>
 
 
 

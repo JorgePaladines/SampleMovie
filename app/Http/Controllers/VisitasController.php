@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -73,21 +72,21 @@ class VisitasController extends Controller
     public function show($id)
     {
 
+
         $movie = Movie::find($id);
 
         $visitas = DB::table('visitas')
               ->join('movies', 'visitas.movie_id', '=', 'movies.id')
-             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->select(DB::raw('visitas.id as identif, movies.titulo as pelicula, avg(calificacion) as calificacion'))
              ->where('movies.id',$id)
              ->groupBy('pelicula')->get();
 
         $data = [
-
             'movie' => $movie,
             'visitas' => $visitas
       ];
 
-        return view('movies.show')->with('data', $data);
+        return view('visitas.show')->with('data', $data);
 
     }
 

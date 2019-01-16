@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Movie;
-USE App\Visitas;
+use App\Visitas;
 
 class MoviesController extends Controller
 {
@@ -61,7 +61,7 @@ class MoviesController extends Controller
 
         $visitas = DB::table('visitas')
               ->join('movies', 'visitas.movie_id', '=', 'movies.id')
-             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->select(DB::raw('visitas.id as identif, movies.titulo as pelicula, avg(calificacion) as calificacion'))
              ->where('movies.id',$id)
              ->groupBy('pelicula')->get();
 

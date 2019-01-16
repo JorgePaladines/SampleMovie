@@ -1,4 +1,3 @@
-
     <!doctype html>
     <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
         <head>
@@ -28,14 +27,15 @@
 
                         <a href="{{ route('movies.index') }}">Movies</a>
                         <a href="{{ route('visitas.index') }}">Top 10</a>
-                        <a href="{{ route('users.index') }}">Users</a>
                     </div>
                 </div>
 
-                <div class="hidden">
+                <div class="hien">
 
                   {{$visitas = $data['visitas']}}
                   {{$movie = $data['movie']}}
+
+                  {{ Auth::user()->id }}
 
               </div>
 
@@ -45,9 +45,30 @@
                   <p><span class="subtitle">Director: </span>{{$movie->director}} <p>
                   <p><span class="subtitle">Reparto: </span>{{$movie->reparto}}</p>
                   <p><span class="subtitle">Tipo de plan: </span>{{$movie->plan}}</p>
-                  <p><span class="subtitle">Calificación: </span>{{$visitas[0]->calificacion}}</p>
+                  <p><span class="subtitle">Calificación: </span>{{$visitas[0]->pelicula}}</p>
 
-
+                  <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <p class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle"
+                                href="{!! route('visitas.show',['user'=>Auth::user()->id]) !!}"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Ver Película <span class="caret"></span>
+                                </a>
+                            </p>
+                        @endguest
+                    </ul>
 
                 </div>
 

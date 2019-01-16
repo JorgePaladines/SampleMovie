@@ -42,7 +42,6 @@
 
                     <a href="{{ route('movies.index') }}">Movies</a>
                     <a href="{{ route('visitas.index') }}">Top 10</a>
-                    <a href="{{ route('users.index') }}">Users</a>
                 </div>
             </div>
         </div>
