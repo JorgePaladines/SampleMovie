@@ -71,7 +71,7 @@ class VisitasController extends Controller
      */
     public function show($id)
     {
-
+        return($id);
 
         $movie = Movie::find($id);
 

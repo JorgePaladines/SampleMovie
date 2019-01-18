@@ -32,10 +32,12 @@
 
                 <div class="hien">
 
-                  {{$visitas = $data['visitas']}}
-                  {{$movie = $data['movie']}}
+                    {{$visitas = $data['visitas']}}
+                    {{$movie = $data['movie']}}
 
-                  {{ Auth::user()->id }}
+                    @if(Auth::user() != null)
+                        {{ Auth::user()->id }}
+                    @endif
 
               </div>
 

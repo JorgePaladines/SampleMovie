@@ -66,10 +66,9 @@ class MoviesController extends Controller
              ->groupBy('pelicula')->get();
 
         $data = [
-
             'movie' => $movie,
             'visitas' => $visitas
-      ];
+        ];
 
         return view('movies.show')->with('data', $data);
     }
