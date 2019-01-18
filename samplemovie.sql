@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 16-01-2019 a las 10:28:27
--- Versión del servidor: 5.7.24-0ubuntu0.16.04.1
--- Versión de PHP: 7.2.14-1+ubuntu16.04.1+deb.sury.org+1
+-- Host: localhost
+-- Generation Time: Jan 17, 2019 at 11:51 PM
+-- Server version: 5.7.24-0ubuntu0.16.04.1
+-- PHP Version: 7.2.13-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `samplemovie`
+-- Database: `samplemovie`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -33,7 +33,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `movies`
+-- Table structure for table `movies`
 --
 
 CREATE TABLE `movies` (
@@ -58,7 +58,7 @@ CREATE TABLE `movies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `movies`
+-- Dumping data for table `movies`
 --
 
 INSERT INTO `movies` (`id`, `titulo`, `director`, `reparto`, `plan`, `created_at`, `updated_at`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `movies` (`id`, `titulo`, `director`, `reparto`, `plan`, `created_at
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -88,7 +88,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -107,7 +107,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `nombre`, `fnacimiento`, `plan`, `ciudad`, `pais`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -127,12 +127,13 @@ INSERT INTO `users` (`id`, `nombre`, `fnacimiento`, `plan`, `ciudad`, `pais`, `e
 (14, ' Dee Galvin ', ' 1985-02-28', 'estandar', 'Charlotte ', 'USA', 'parkes@optonline.net', '2019-01-08 05:00:00', '12345', 'effort', '2019-01-08 05:00:00', '2019-01-08 05:00:00'),
 (15, ' Modesto Casares ', ' 1990-09-05', 'premium', 'Las Vegas ', 'USA', 'pavel@mac.com', '2019-01-08 05:00:00', '12345', 'politics', '2019-01-08 05:00:00', '2019-01-08 05:00:00'),
 (16, ' Darwin Colpitts ', ' 1998-08-04', 'basico', 'Washington ', 'USA', 'hoyer@live.com', '2019-01-08 05:00:00', '12345', 'dealer', '2019-01-08 05:00:00', '2019-01-08 05:00:00'),
-(17, 'asdfadf', NULL, NULL, NULL, NULL, 'aaaa@gmail.com', NULL, '$2y$10$5e75Ge2B6eQxSZDTReUVj.bJO/gxHlNiBlfXpnWvdp4lI9vRyjp5C', 'poZoZqkSjW9BDyYQHa5Knb9xAUjpJNseOmWAJ8MOA52WegXUIZGi5AtQIHKG', '2019-01-16 20:18:34', '2019-01-16 20:18:34');
+(17, 'asdfadf', NULL, NULL, NULL, NULL, 'aaaa@gmail.com', NULL, '$2y$10$5e75Ge2B6eQxSZDTReUVj.bJO/gxHlNiBlfXpnWvdp4lI9vRyjp5C', 'poZoZqkSjW9BDyYQHa5Knb9xAUjpJNseOmWAJ8MOA52WegXUIZGi5AtQIHKG', '2019-01-16 20:18:34', '2019-01-16 20:18:34'),
+(18, '123', NULL, NULL, NULL, NULL, '123@123.com', NULL, '$2y$10$TzK4vJxiuucrwCe/e1oi8.jsuDkjiksfpwAQ9u12T5ogWbZEVrdQy', 'NSv2H6VHVpWzmMFneG4wt5PA3kSIHABAEK0S4Ze8lSjHuEXXAW85IRF52ovr', '2019-01-18 07:01:01', '2019-01-18 07:01:01');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `visitas`
+-- Table structure for table `visitas`
 --
 
 CREATE TABLE `visitas` (
@@ -146,12 +147,12 @@ CREATE TABLE `visitas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `visitas`
+-- Dumping data for table `visitas`
 --
 
 INSERT INTO `visitas` (`id`, `user_id`, `movie_id`, `created_at`, `updated_at`, `visitas`, `calificacion`) VALUES
-(1, 1, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
-(2, 2, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
+(1, 1, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', 1, 4),
+(2, 2, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, 1),
 (3, 3, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (4, 4, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (5, 5, 1, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
@@ -175,7 +176,7 @@ INSERT INTO `visitas` (`id`, `user_id`, `movie_id`, `created_at`, `updated_at`, 
 (23, 3, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (24, 4, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (25, 5, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
-(26, 6, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
+(26, 6, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', 2, 2),
 (27, 16, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (28, 15, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (29, 14, 3, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
@@ -225,39 +226,40 @@ INSERT INTO `visitas` (`id`, `user_id`, `movie_id`, `created_at`, `updated_at`, 
 (73, 15, 8, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (74, 5, 9, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
 (75, 6, 9, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
-(76, 9, 10, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL);
+(76, 9, 10, '2019-01-10 05:00:00', '2019-01-10 05:00:00', NULL, NULL),
+(77, 18, 1, '2019-01-17 05:00:00', '2019-01-17 05:00:00', 3, 3);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `movies`
+-- Indexes for table `movies`
 --
 ALTER TABLE `movies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indices de la tabla `visitas`
+-- Indexes for table `visitas`
 --
 ALTER TABLE `visitas`
   ADD PRIMARY KEY (`id`),
@@ -265,35 +267,35 @@ ALTER TABLE `visitas`
   ADD KEY `users_id` (`user_id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT de la tabla `movies`
+-- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
--- AUTO_INCREMENT de la tabla `visitas`
+-- AUTO_INCREMENT for table `visitas`
 --
 ALTER TABLE `visitas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `visitas`
+-- Constraints for table `visitas`
 --
 ALTER TABLE `visitas`
   ADD CONSTRAINT `movies_id` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`),
