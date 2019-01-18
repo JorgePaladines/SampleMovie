@@ -22,3 +22,8 @@ Route::resource('visitas', 'VisitasController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/visitas/{id_user}/{id_movie}',[
+    'uses' => 'VisitasController@visitas',
+    'as'   => 'visita'
+]);

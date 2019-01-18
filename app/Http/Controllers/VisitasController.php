@@ -63,6 +63,21 @@ class VisitasController extends Controller
 
     }
 
+    public function visitas($id_user, $id_movie)
+    {
+        $visitas = DB::table('visitas')
+             ->where('movie_id',$id_movie)
+             ->where('user_id',$id_user)->get();
+
+        if(json_decode($visitas, true))
+            Form::open(['action' => ['VisitasController@update', $visitas[0]->id], 'method' => 'POST', 'enctype' => 'multipart/form-data'])
+            Form::hidden('_method','PUT');
+            Form::submit();
+            Form::close();
+        else
+            return('no hay nada');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -77,9 +92,8 @@ class VisitasController extends Controller
 
         $visitas = DB::table('visitas')
               ->join('movies', 'visitas.movie_id', '=', 'movies.id')
-             ->select(DB::raw('visitas.id as identif, movies.titulo as pelicula, avg(calificacion) as calificacion'))
-             ->where('movies.id',$id)
-             ->groupBy('pelicula')->get();
+              ->select(DB::raw('visitas.id as id, user_id as userID, movies.id as movieID, movies.titulo as titulo, visitas.calificacion as calificacion'))
+             ->where('visitas.id',77)->get();
 
         $data = [
             'movie' => $movie,
@@ -110,7 +124,11 @@ class VisitasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $visita = Visita::find($id);
+        $visita->visitas = $visita->visitas+1;
+        $post->save();
+
+        return($request);
     }
 
     /**

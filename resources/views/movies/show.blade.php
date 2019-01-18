@@ -30,14 +30,31 @@
                     </div>
                 </div>
 
-                <div class="hien">
-
+                <div class="hidden">
+                    
                     {{$visitas = $data['visitas']}}
                     {{$movie = $data['movie']}}
 
-                    @if(Auth::user() != null)
-                        {{ Auth::user()->id }}
-                    @endif
+                    <?php
+                    if(Auth::user() != null){
+                        $info = [
+                            'id_user' => Auth::user()->id,
+                            'id_movie' => $movie->id
+                        ];
+                    }
+                    else{
+
+                        $info = [
+                            'id_user' => null,
+                            'id_movie' => $movie->id
+                        ];
+                    
+                    }
+
+                    ?>
+                    
+                    {{$info['id_user']}}
+
 
               </div>
 
@@ -47,7 +64,7 @@
                   <p><span class="subtitle">Director: </span>{{$movie->director}} <p>
                   <p><span class="subtitle">Reparto: </span>{{$movie->reparto}}</p>
                   <p><span class="subtitle">Tipo de plan: </span>{{$movie->plan}}</p>
-                  <p><span class="subtitle">Calificación: </span>{{$visitas[0]->pelicula}}</p>
+                  <p><span class="subtitle">Calificación: </span>{{$visitas[0]->calificacion}}</p>
 
                   <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -64,7 +81,7 @@
                         @else
                             <p class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle"
-                                href="{!! route('visitas.show',['user'=>Auth::user()->id]) !!}"
+                                href="{!! route('visita', ['id_user'=>$info['id_user'], 'id_movie'=>$info['id_movie']]) !!}"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     Ver Película <span class="caret"></span>
                                 </a>

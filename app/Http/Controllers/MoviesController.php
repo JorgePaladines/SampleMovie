@@ -56,14 +56,13 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-
-        $movie = Movie::find($id);
-
         $visitas = DB::table('visitas')
               ->join('movies', 'visitas.movie_id', '=', 'movies.id')
-             ->select(DB::raw('visitas.id as identif, movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
              ->where('movies.id',$id)
              ->groupBy('pelicula')->get();
+
+        $movie = Movie::find($id);
 
         $data = [
             'movie' => $movie,
@@ -72,6 +71,20 @@ class MoviesController extends Controller
 
         return view('movies.show')->with('data', $data);
     }
+
+            /*
+
+            $visitas = DB::table('visitas')
+              ->join('movies', 'visitas.movie_id', '=', 'movies.id')
+             ->where('visitas.id',1)->get();
+
+
+
+            $visitas = DB::table('visitas')
+              ->join('movies', 'visitas.movie_id', '=', 'movies.id')
+             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->where('movies.id',$id)
+             ->groupBy('pelicula')->get();
 
     /**
      * Show the form for editing the specified resource.
