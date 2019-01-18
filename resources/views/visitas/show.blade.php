@@ -41,7 +41,7 @@
 
                 <div class="content m-b-md">
 
-
+                    Estás viendo una película
 
                 </div>
 

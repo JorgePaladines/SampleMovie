@@ -79,10 +79,6 @@
                                 </li>
                             @endif
                         @else
-                        {{!! Form::open(['action' => ['VisitasController@visitas', $info['id_user'], $info['id_movie']], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}}
-                            {{Form::hidden('_method','PUT')}}
-                            {{Form::submit('Ver Película', ['class'=>'btn btn-primary'])}}
-                        {{!! Form::close() !!}}
                             <p class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle"
                                 href="{!! route('visita', ['id_user'=>$info['id_user'], 'id_movie'=>$info['id_movie']]) !!}"

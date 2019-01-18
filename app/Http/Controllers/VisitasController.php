@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Movie;
-USE App\Visitas;
+use App\Visita;
 
 
 class VisitasController extends Controller
@@ -70,8 +70,9 @@ class VisitasController extends Controller
              ->where('user_id',$id_user)->get();
 
         if(json_decode($visitas, true)){
-            return($visitas);
-            $this->update(null,$visitas[0]->id);
+            $request = request();
+            $this->update($request,$visitas[0]->id);
+
         }
         else
             return('no hay nada');
@@ -125,9 +126,9 @@ class VisitasController extends Controller
     {
         $visita = Visita::find($id);
         $visita->visitas = $visita->visitas+1;
-        $post->save();
+        $visita->save();
 
-        return($visita);
+        return redirect('visitas.show')->with('success', 'Visita Updated');
     }
 
     /**
