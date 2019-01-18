@@ -69,11 +69,10 @@ class VisitasController extends Controller
              ->where('movie_id',$id_movie)
              ->where('user_id',$id_user)->get();
 
-        if(json_decode($visitas, true))
-            Form::open(['action' => ['VisitasController@update', $visitas[0]->id], 'method' => 'POST', 'enctype' => 'multipart/form-data'])
-            Form::hidden('_method','PUT');
-            Form::submit();
-            Form::close();
+        if(json_decode($visitas, true)){
+            return($visitas);
+            $this->update(null,$visitas[0]->id);
+        }
         else
             return('no hay nada');
     }
@@ -128,7 +127,7 @@ class VisitasController extends Controller
         $visita->visitas = $visita->visitas+1;
         $post->save();
 
-        return($request);
+        return($visita);
     }
 
     /**
