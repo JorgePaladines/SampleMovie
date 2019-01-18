@@ -10,11 +10,6 @@ use App\Visita;
 class VisitasController extends Controller
 {
 
-    public static function ver($id)
-    {
-        
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -60,7 +55,12 @@ class VisitasController extends Controller
      */
     public function store(Request $request)
     {
-
+        $visita = new Visita;
+        $visita->user_id = $request->user_id;
+        $visita->movie_id = $request->movie_id;
+        $visita->visitas = 1;
+        $visita->calificacion = null;
+        $visita->save();
     }
 
     public function visitas($id_user, $id_movie)
@@ -69,13 +69,31 @@ class VisitasController extends Controller
              ->where('movie_id',$id_movie)
              ->where('user_id',$id_user)->get();
 
+        $request = request();
+
+        $movie = Movie::find($id_movie);
+
         if(json_decode($visitas, true)){
-            $request = request();
+
             $this->update($request,$visitas[0]->id);
 
         }
-        else
-            return('no hay nada');
+        else{
+            
+            $request->request->add(['user_id' => $id_user]);
+            $request->request->add(['movie_id' => $id_movie]);
+
+            $this->store($request);
+        }
+
+        $visita = Visita::where('movie_id', $id_movie)->where('user_id',$id_user)->first();
+
+        $data = [
+            'movie' => $movie,
+            'visita' => $visita
+        ];
+
+        return view('visitas.show')->with('data',$data);
     }
 
     /**
@@ -86,21 +104,6 @@ class VisitasController extends Controller
      */
     public function show($id)
     {
-        return($id);
-
-        $movie = Movie::find($id);
-
-        $visitas = DB::table('visitas')
-              ->join('movies', 'visitas.movie_id', '=', 'movies.id')
-              ->select(DB::raw('visitas.id as id, user_id as userID, movies.id as movieID, movies.titulo as titulo, visitas.calificacion as calificacion'))
-             ->where('visitas.id',77)->get();
-
-        $data = [
-            'movie' => $movie,
-            'visitas' => $visitas
-      ];
-
-        return view('visitas.show')->with('data', $data);
 
     }
 
@@ -125,10 +128,17 @@ class VisitasController extends Controller
     public function update(Request $request, $id)
     {
         $visita = Visita::find($id);
-        $visita->visitas = $visita->visitas+1;
-        $visita->save();
+        if($request->input('calificacion') != null){
+            $visita->calificacion = $request->input('calificacion');
+            $visita->save();
 
-        return redirect('visitas.show')->with('success', 'Visita Updated');
+            return view('welcome');
+        }
+        else{
+            $visita->visitas = $visita->visitas+1;
+            $visita->save();
+        }
+
     }
 
     /**
