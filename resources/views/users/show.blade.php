@@ -19,7 +19,6 @@
                 <div class="hidden">
 
                   {{$user = $data['user']}}
-                  {{$movies = $data['movies']}}
 
               </div>
               <div class="content">
@@ -38,30 +37,15 @@
                   </div>
               </div>
 
+              <p><span class="subtitle">Nombre: </span>{{$user->nombre}}<p>
+              <p><span class="subtitle">Contraseña: </span>{{$user->password}}</p>
+              <p><span class="subtitle">Email: </span>{{$user->email}}</p>
+              <p><span class="subtitle">Token: </span>{{$user->remember_token}}</p>
 
 
               <div class="content m-b-md">
 
 
-
-                <h3>Select a movie to watch</h3>
-
-                    @if(count($movies) > 0)
-                        @foreach($movies as $movie)
-                            <div class="well">
-                                <div class="row">
-                                    <div class="col-md-8 col-sm-8">
-                                      {{VisitasController::ver($movie->id)}}
-                                        <a href="href="{{ route('visitas.ver', $movie->id) }}">{{$movie->titulo}}</a>
-                                        <small>Written on {{$movie->created_at}}</small>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <p>:( No tenemos películas disponibles)</p>
-                	@endif
-              </div>
 
 
       </body>

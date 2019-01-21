@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\User;
+use App\Http\Resources\User as UserResource;
+
+Route::get('/user/{id_user}', function ($id) {
+    return new UserResource(User::find($id));
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,3 +33,15 @@ Route::get('/visitas/{id_user}/{id_movie}',[
     'uses' => 'VisitasController@visitas',
     'as'   => 'visita'
 ]);
+
+
+Route::get('/cookie/set','CookieController@setCookie');
+Route::get('/cookie/get','CookieController@getCookie');
+
+
+Route::get('/profile/{user_id}','UsersController@showProfile');
+
+
+Route::get('session/get','SessionController@accessSessionData');
+Route::get('session/set','SessionController@storeSessionData');
+Route::get('session/remove','SessionController@deleteSessionData');

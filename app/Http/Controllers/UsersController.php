@@ -15,8 +15,16 @@ class UsersController extends Controller
      */
     public function index()
     {
-        /*$users = User::all();
-        return view('users.usersIndex')->with('users', $users);*/
+        $users = User::all();
+
+        return view('users.usersIndex')->with('users', $users);
+    }
+
+        public function showProfile(Request $request, $id)
+    {
+        $value = $request->session()->get('key');
+
+        //
     }
 
     /**

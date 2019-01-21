@@ -15,6 +15,10 @@
                     @endif
 
                     You are logged in!
+
+                    @if (Auth::user()->isAdmin==1)
+                    See all of our users here <a class="users_btn" href={{route('users.index')}}>USERS</a>
+                    @endif
                 </div>
             </div>
         </div>
