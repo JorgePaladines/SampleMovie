@@ -19,6 +19,7 @@ html, body {
   font-size: 24px;
 
 }
+
 .hidden{
   visibility: hidden;
 
@@ -28,6 +29,28 @@ html, body {
 color: darkgoldenrod;
 font-size: 24px;
 
+}
+.bt_pelicula{
+  margin:10px;
+  border-radius: 10px;
+  color: black;
+
+
+}
+.bt_pelicula:hover{
+
+  box-shadow: cornflowerblue 5px;
+  margin: 10px;
+  color: black;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e1ad30), to(#FFD46C));
+  background: -webkit-linear-gradient(top, #e1ad30 #FFD46C);
+  background: -moz-linear-gradient(top, #e1ad30, #FFD46C);
+  background: -ms-linear-gradient(top, #e1ad30, #FFD46C);
+  background: -o-linear-gradient(top, #e1ad30, #FFD46C);
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  text-decoration: none;
 }
 
 .subtitle{
