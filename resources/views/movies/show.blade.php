@@ -48,11 +48,19 @@
                                </li>
                            @endif
                        @else
-
+                              @if(!strcasecmp(Auth::user()->plan, $movie->plan))
                                <a class="bt_pelicula flex-center"
                                href="{!! route('visita', ['id_user'=>$info['id_user'], 'id_movie'=>$info['id_movie']]) !!}">
                                    Ver Película
                                </a>
+
+                               @else
+
+                               <p> Esta película no está incluida en su plan actual</p>
+                              @endif
+
+
+
                        @endguest
                    </ul>
 

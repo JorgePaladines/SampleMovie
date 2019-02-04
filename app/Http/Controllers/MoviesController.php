@@ -17,8 +17,13 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
-        return view('movies.moviesIndex')->with('movies', $movies);
+      $visitas = DB::table('visitas')
+            ->join('movies', 'visitas.movie_id', '=', 'movies.id')
+           ->select(DB::raw('movies.id as id, movies.titulo as titulo, avg(calificacion) as calificacion'))
+           ->groupBy('id')->get();
+
+        
+        return view('movies.moviesIndex')->with('visitas', $visitas);
     }
 
     /**

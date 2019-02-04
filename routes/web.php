@@ -43,5 +43,5 @@ Route::get('/profile/{user_id}','UsersController@showProfile');
 
 
 Route::get('session/get','SessionController@accessSessionData');
-Route::get('session/set','SessionController@storeSessionData');
+Route::get('session/infoUsuario','SessionController@infoUsuario');
 Route::get('session/remove','SessionController@deleteSessionData');

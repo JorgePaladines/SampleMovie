@@ -51,6 +51,9 @@ font-size: 24px;
   -moz-border-radius: 9px;
   border-radius: 9px;
   text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+   word-wrap: break-word;
 }
 
 .subtitle{

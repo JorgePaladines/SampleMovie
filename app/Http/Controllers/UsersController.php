@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Movie;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UsersController extends Controller
 {
@@ -15,17 +17,15 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        if (Auth::check()){
 
-        return view('users.usersIndex')->with('users', $users);
+          return view('users.index');
+
+        }
+
     }
 
-        public function showProfile(Request $request, $id)
-    {
-        $value = $request->session()->get('key');
-
-        //
-    }
+  
 
     /**
      * Show the form for creating a new resource.
