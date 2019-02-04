@@ -22,7 +22,7 @@ class MoviesController extends Controller
            ->select(DB::raw('movies.id as id, movies.titulo as titulo, avg(calificacion) as calificacion'))
            ->groupBy('id')->get();
 
-        
+
         return view('movies.moviesIndex')->with('visitas', $visitas);
     }
 
@@ -63,9 +63,9 @@ class MoviesController extends Controller
     {
         $visitas = DB::table('visitas')
               ->join('movies', 'visitas.movie_id', '=', 'movies.id')
-             ->select(DB::raw('movies.titulo as pelicula, avg(calificacion) as calificacion'))
+             ->select(DB::raw('movies.id, movies.titulo as pelicula, avg(calificacion) as calificacion'))
              ->where('movies.id',$id)
-             ->groupBy('pelicula')->get();
+             ->groupBy('movies.id')->get();
 
         $movie = Movie::find($id);
 
@@ -76,6 +76,11 @@ class MoviesController extends Controller
 
         return view('movies.show')->with('data', $data);
     }
+
+
+
+
+
 
             /*
 

@@ -35,6 +35,7 @@ class HomeController extends Controller
 
         $request->session()->put('nombre',Auth::user()->nombre);
         $request->session()->put('plan',Auth::user()->plan);
+
         $visitas = DB::table('visitas')
                    ->join('movies', 'visitas.movie_id', '=', 'movies.id')
                   ->select(DB::raw('movies.id as id, movies.titulo as titulo, avg(calificacion) as calificacion'))
@@ -52,9 +53,4 @@ class HomeController extends Controller
     }
 
 
-    public function findMovies(){
-
-
-
-    }
 }
