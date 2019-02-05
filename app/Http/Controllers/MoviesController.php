@@ -59,21 +59,23 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
+        
+
         $visitas = DB::table('visitas')
               ->join('movies', 'visitas.movie_id', '=', 'movies.id')
              ->select(DB::raw('movies.id, movies.titulo as pelicula, avg(calificacion) as calificacion'))
-             ->where('movies.id',$id)
+             ->where('movies.id',$request->id)
              ->groupBy('movies.id')->get();
 
-        $movie = Movie::find($id);
+        $movie = Movie::find($request->id);
 
         $data = [
             'movie' => $movie,
             'visitas' => $visitas
         ];
-
+        
         return view('movies.show')->with('data', $data);
     }
 

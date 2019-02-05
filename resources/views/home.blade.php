@@ -24,10 +24,20 @@
                                       <div class="row">
                                           <div class="col-md-8 col-sm-8">
 
+
                                             {!! Form::open(['action' => ['MoviesController@show', $visita->id], 'method' => 'GET', 'enctype' => 'multipart/form-data']) !!}
-                                                    {{Form::hidden('_method','PUT')}}
+                                                    {{Form::hidden('id',$visita->id)}}
                                                     {{Form::submit($visita->titulo, ['class'=>'btn btn-primary col-md-12 col-sm-12'])}}
+
                                             {!! Form::close() !!}
+
+
+                                              <div>
+                                              
+                                              </div>
+
+
+
 
                                               @if ($visita->calificacion!=NULL)
                                                 <small>Calificación: {{$visita->calificacion}}</small>
